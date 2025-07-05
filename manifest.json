@@ -1,0 +1,21 @@
+{
+  "short_name": "Recepti",
+  "name": "Generator Naključnih Obrokov",
+  "icons": [
+    {
+      "src": "https://placehold.co/192x192/007bff/ffffff?text=R",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://placehold.co/512x512/007bff/ffffff?text=Recepti",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.html",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "./",
+  "theme_color": "#007bff"
+}
