@@ -3,13 +3,13 @@
   "name": "Generator Naključnih Obrokov",
   "icons": [
     {
-      "src": "https://i.ibb.co/67nrpJ5/image.png",
-      "type": "image/png",
+      "src": "https://kokanp.github.io/recipebob/img/mainiconnotext.webp",
+      "type": "image/webp",
       "sizes": "192x192"
     },
     {
-      "src": "https://i.ibb.co/67nrpJ5/image.png",
-      "type": "image/png",
+      "src": "https://kokanp.github.io/recipebob/img/mainiconnotext.webp",
+      "type": "image/webp",
       "sizes": "512x512"
     }
   ],

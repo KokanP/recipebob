@@ -8,7 +8,7 @@
     <!-- Ikone in podpora za Web App -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#ffffff">
-    <link rel="apple-touch-icon" href="https://placehold.co/192x192/007bff/ffffff?text=Recepti">
+    <link rel="apple-touch-icon" href="https://kokanp.github.io/recipebob/img/mainiconnotext.webp">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -38,6 +38,7 @@
         }
         .refresh-btn {
             transition: transform 0.2s ease-in-out;
+            cursor: pointer;
         }
         .refresh-btn:hover {
             transform: rotate(90deg);
@@ -53,15 +54,18 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <div class="container mx-auto p-4 md:p-8">
-        <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Generator Obrokov</h1>
-            <p class="text-lg text-gray-600 mt-2">Poiščite navdih za vaš naslednji obrok z enim klikom!</p>
+    <div class="w-full min-h-screen p-4 md:p-8">
+        <header class="text-center mb-6">
+            <!-- LOGOTIP ZAVZEMA VEČ PROSTORA, BESEDILO ODSTRANJENO -->
+            <div class="flex justify-center items-center">
+                <img src="https://kokanp.github.io/recipebob/img/mainiconwtext.webp" alt="Logotip Generatorja Obrokov" class="w-4/5 max-w-xs md:max-w-sm">
+            </div>
         </header>
 
-        <div class="text-center mb-8">
-            <button id="generateBtn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300 text-xl">
-                Predlagaj nov obrok
+        <div class="text-center my-8">
+            <!-- GLAVNI GUMB JE ZDAJ VEČJA IKONA BREZ OZADJA -->
+            <button id="generateBtn" class="p-2 rounded-full refresh-btn" title="Predlagaj nov obrok">
+                <img src="https://kokanp.github.io/recipebob/img/refresh.webp" alt="Predlagaj nov obrok" class="w-20 h-20">
             </button>
         </div>
 
@@ -70,14 +74,17 @@
             <div class="recipe-card bg-white rounded-xl shadow-md overflow-hidden">
                 <img id="starter-image" src="https://placehold.co/600x400/E2E8F0/4A5568?text=Predjed" alt="Slika predjedi" class="recipe-image">
                 <div class="p-6 flex-grow flex flex-col">
-                    <div class="flex justify-between items-center border-b pb-2 mb-4">
-                        <h2 class="text-2xl font-bold">Predjed</h2>
-                        <button id="refresh-starter" class="p-2 rounded-full hover:bg-gray-200 refresh-btn" title="Osveži samo predjed">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500"><path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/></svg>
-                        </button>
+                    <div class="border-b pb-2 mb-4">
+                        <h2 class="text-2xl font-bold text-center">Predjed</h2>
                     </div>
                     <div id="starter-content" class="recipe-details flex-grow">
                         <p>Nalagam recepte... Kliknite na gumb za predlog.</p>
+                    </div>
+                    <!-- IKONA PRESTAVLJENA POD VSEBINO IN POVEČANA -->
+                    <div class="flex justify-center mt-4">
+                        <button id="refresh-starter" class="p-1 rounded-full refresh-btn" title="Osveži samo predjed">
+                           <img src="https://kokanp.github.io/recipebob/img/refresh.webp" alt="Osveži predjed" class="w-12 h-12">
+                        </button>
                     </div>
                 </div>
             </div>
@@ -86,14 +93,17 @@
             <div class="recipe-card bg-white rounded-xl shadow-md overflow-hidden">
                 <img id="main-course-image" src="https://placehold.co/600x400/E2E8F0/4A5568?text=Glavna+Jed" alt="Slika glavne jedi" class="recipe-image">
                  <div class="p-6 flex-grow flex flex-col">
-                    <div class="flex justify-between items-center border-b pb-2 mb-4">
-                        <h2 class="text-2xl font-bold">Glavna Jed</h2>
-                         <button id="refresh-main" class="p-2 rounded-full hover:bg-gray-200 refresh-btn" title="Osveži samo glavno jed">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500"><path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/></svg>
-                        </button>
+                    <div class="border-b pb-2 mb-4">
+                        <h2 class="text-2xl font-bold text-center">Glavna Jed</h2>
                     </div>
                     <div id="main-course-content" class="recipe-details flex-grow">
                          <p>Nalagam recepte... Kliknite na gumb za predlog.</p>
+                    </div>
+                     <!-- IKONA PRESTAVLJENA POD VSEBINO IN POVEČANA -->
+                    <div class="flex justify-center mt-4">
+                         <button id="refresh-main" class="p-1 rounded-full refresh-btn" title="Osveži samo glavno jed">
+                            <img src="https://kokanp.github.io/recipebob/img/refresh.webp" alt="Osveži glavno jed" class="w-12 h-12">
+                        </button>
                     </div>
                 </div>
             </div>
@@ -104,7 +114,7 @@
         </footer>
     </div>
 
-    <!-- Logika aplikacije -->
+    <!-- Logika aplikacije ostaja enaka -->
     <script>
         const generateBtn = document.getElementById('generateBtn');
         const starterContent = document.getElementById('starter-content');
