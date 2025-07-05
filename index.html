@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator Obrokov</title>
+    <title>RecipeBob</title>
     
     <!-- Ikone in podpora za Web App -->
     <link rel="manifest" href="manifest.json">
@@ -24,6 +24,7 @@
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             display: flex;
             flex-direction: column;
+            background-color: #f7fafc; /* Svetlo sivo ozadje za kartice */
         }
         .recipe-card:hover {
             transform: translateY(-5px);
@@ -31,7 +32,7 @@
         }
         .recipe-details ul {
             list-style-position: inside;
-            padding-left: 1.25rem;
+            padding-left: 1rem;
         }
         .recipe-details ul li {
             margin-bottom: 0.5rem;
@@ -41,69 +42,63 @@
             cursor: pointer;
         }
         .refresh-btn:hover {
-            transform: rotate(90deg);
+            transform: rotate(90deg) scale(1.05);
         }
         .recipe-image {
             height: 200px;
             width: 100%;
             object-fit: cover;
-            border-top-left-radius: 0.75rem; /* rounded-xl */
-            border-top-right-radius: 0.75rem; /* rounded-xl */
+        }
+        #main-logo-btn {
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        #main-logo-btn:hover {
+            transform: scale(1.03);
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-white text-gray-800">
 
-    <div class="w-full min-h-screen p-4 md:p-8">
-        <header class="text-center mb-6">
-            <!-- LOGOTIP ZAVZEMA VEČ PROSTORA, BESEDILO ODSTRANJENO -->
+    <div class="w-full min-h-screen p-4 md:p-6">
+        <header class="text-center mb-4">
+            <!-- LOGOTIP JE GLAVNI GUMB ZA OSVEŽEVANJE -->
             <div class="flex justify-center items-center">
-                <img src="https://kokanp.github.io/recipebob/img/mainiconwtext.webp" alt="Logotip Generatorja Obrokov" class="w-4/5 max-w-xs md:max-w-sm">
+                <button id="generateBtn" title="Predlagaj nov obrok">
+                    <img src="https://kokanp.github.io/recipebob/img/mainiconwtext.webp" alt="Logotip RecipeBob" id="main-logo-btn" class="w-4/5 max-w-[280px] md:max-w-xs mx-auto">
+                </button>
             </div>
         </header>
 
-        <div class="text-center my-8">
-            <!-- GLAVNI GUMB JE ZDAJ VEČJA IKONA BREZ OZADJA -->
-            <button id="generateBtn" class="p-2 rounded-full refresh-btn" title="Predlagaj nov obrok">
-                <img src="https://kokanp.github.io/recipebob/img/refresh.webp" alt="Predlagaj nov obrok" class="w-20 h-20">
-            </button>
-        </div>
-
-        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Posoda za predjed -->
-            <div class="recipe-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="recipe-card rounded-xl shadow-md overflow-hidden">
                 <img id="starter-image" src="https://placehold.co/600x400/E2E8F0/4A5568?text=Predjed" alt="Slika predjedi" class="recipe-image">
+                <!-- IKONA PRESTAVLJENA POD SLIKO IN NAD VSEBINO -->
+                <div class="flex justify-center py-4 border-b">
+                    <button id="refresh-starter" class="p-1 rounded-full refresh-btn" title="Osveži samo predjed">
+                       <img src="https://kokanp.github.io/recipebob/img/refresh.webp" alt="Osveži predjed" class="w-14 h-14">
+                    </button>
+                </div>
                 <div class="p-6 flex-grow flex flex-col">
-                    <div class="border-b pb-2 mb-4">
-                        <h2 class="text-2xl font-bold text-center">Predjed</h2>
-                    </div>
                     <div id="starter-content" class="recipe-details flex-grow">
-                        <p>Nalagam recepte... Kliknite na gumb za predlog.</p>
-                    </div>
-                    <!-- IKONA PRESTAVLJENA POD VSEBINO IN POVEČANA -->
-                    <div class="flex justify-center mt-4">
-                        <button id="refresh-starter" class="p-1 rounded-full refresh-btn" title="Osveži samo predjed">
-                           <img src="https://kokanp.github.io/recipebob/img/refresh.webp" alt="Osveži predjed" class="w-12 h-12">
-                        </button>
+                        <p>Nalagam recepte... Kliknite na logotip za predlog.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Posoda za glavno jed -->
-            <div class="recipe-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="recipe-card rounded-xl shadow-md overflow-hidden">
                 <img id="main-course-image" src="https://placehold.co/600x400/E2E8F0/4A5568?text=Glavna+Jed" alt="Slika glavne jedi" class="recipe-image">
+                 <!-- IKONA PRESTAVLJENA POD SLIKO IN NAD VSEBINO -->
+                <div class="flex justify-center py-4 border-b">
+                     <button id="refresh-main" class="p-1 rounded-full refresh-btn" title="Osveži samo glavno jed">
+                        <img src="https://kokanp.github.io/recipebob/img/refresh.webp" alt="Osveži glavno jed" class="w-14 h-14">
+                    </button>
+                </div>
                  <div class="p-6 flex-grow flex flex-col">
-                    <div class="border-b pb-2 mb-4">
-                        <h2 class="text-2xl font-bold text-center">Glavna Jed</h2>
-                    </div>
                     <div id="main-course-content" class="recipe-details flex-grow">
-                         <p>Nalagam recepte... Kliknite na gumb za predlog.</p>
-                    </div>
-                     <!-- IKONA PRESTAVLJENA POD VSEBINO IN POVEČANA -->
-                    <div class="flex justify-center mt-4">
-                         <button id="refresh-main" class="p-1 rounded-full refresh-btn" title="Osveži samo glavno jed">
-                            <img src="https://kokanp.github.io/recipebob/img/refresh.webp" alt="Osveži glavno jed" class="w-12 h-12">
-                        </button>
+                         <p>Nalagam recepte... Kliknite na logotip za predlog.</p>
                     </div>
                 </div>
             </div>
@@ -130,13 +125,12 @@
                 const randomIndex = Math.floor(Math.random() * predjedi.length);
                 const selected = predjedi[randomIndex];
                 starterContent.innerHTML = `
-                    <h3 class="text-xl font-semibold text-blue-700 mb-2">${selected.ime}</h3>
+                    <h3 class="text-xl font-semibold text-blue-700 mb-3 text-center">${selected.ime}</h3>
                     <p class="mb-2"><strong class="font-medium">Sestavine:</strong></p>
                     ${selected.kolicine}
-                    <p class="mt-3 mb-2"><strong class="font-medium">Priprava:</strong></p>
+                    <p class="mt-4 mb-2"><strong class="font-medium">Priprava:</strong></p>
                     ${selected.priprava}
                 `;
-                // Posodobimo sliko, če obstaja, sicer uporabimo privzeto
                 starterImage.src = selected.image || 'https://placehold.co/600x400/E2E8F0/4A5568?text=Predjed';
                 starterImage.alt = `Slika jedi: ${selected.ime}`;
             } else {
@@ -150,13 +144,12 @@
                 const randomIndex = Math.floor(Math.random() * glavneJedi.length);
                 const selected = glavneJedi[randomIndex];
                 mainCourseContent.innerHTML = `
-                    <h3 class="text-xl font-semibold text-blue-700 mb-2">${selected.ime}</h3>
+                    <h3 class="text-xl font-semibold text-blue-700 mb-3 text-center">${selected.ime}</h3>
                     <p class="mb-2"><strong class="font-medium">Sestavine:</strong></p>
                     ${selected.kolicine}
-                    <p class="mt-3 mb-2"><strong class="font-medium">Priprava:</strong></p>
+                    <p class="mt-4 mb-2"><strong class="font-medium">Priprava:</strong></p>
                     ${selected.priprava}
                 `;
-                // Posodobimo sliko, če obstaja, sicer uporabimo privzeto
                 mainCourseImage.src = selected.image || 'https://placehold.co/600x400/E2E8F0/4A5568?text=Glavna+Jed';
                 mainCourseImage.alt = `Slika jedi: ${selected.ime}`;
             } else {
